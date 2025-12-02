@@ -1,8 +1,17 @@
-import './App.css';
+import "./App.css";
+
+const initialItems = [
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: false },
+];
+
 export default function App() {
   return (
-    <div>
+    <div className="app">
       <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
     </div>
   );
 }
@@ -12,10 +21,55 @@ function Logo() {
     <div>
       <h1>🌴 Travel List 🧳</h1>
     </div>
-  )
+  );
 }
 function Form() {
 
+  function handleSubmit(e){
+    e.preventDefault(); // to prevent reloading the page
+    console.log('Submitted');
+  }
+  return (
+    <>
+      <form className="add-form" onSubmit={handleSubmit}>What do you need for your trip?
+        <select>
+          {/* To generate number list can be used this Array.from */}
+          {Array.from({length:20},(_,i)=>i+1).map(num =><option value={num} key={num}>{num}</option>)}
+        </select>
+        <input type="text" placeholder="Item..."/>
+        <button>Add</button>
+      </form>
+    </>
+  );
 }
-function PackingList() {}
-function Stats() {}
+function PackingList() {
+  return (
+    <div className="list">
+      <ul>
+        {initialItems.map((item) => (
+          <Item item={item} key={item.id} />
+        ))}
+      </ul>
+      ;
+    </div>
+  ); 
+}
+
+function Item({ item }) {
+  return (
+    <li>
+      <span style={item.packed ? {textDecoration:'line-through'} : {}}>
+        {item.quantity} {item.description}
+      </span>
+      <button>❌</button>
+    </li>
+  );
+}
+
+function Stats() {
+  return (
+    <footer className="stats">
+      You have X items on your list, and you are already packed.
+    </footer>
+  );
+}
