@@ -1,7 +1,7 @@
 import { useState } from "react";
-import '../App.css';
+import "../App.css";
 
-function Form({  onAddItems }) {
+function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
