@@ -2,7 +2,7 @@ import Item from "./Item.jsx";
 import "../App.css";
 import { useState } from "react";
 
-function PackingList({ items, onDeleteItems, onToggleItem }) {
+function PackingList({ items, onDeleteItems, onToggleItem, onClearList }) {
   const [sortBy, setSortBy] = useState("input");
   let sortedItems;
 
@@ -19,7 +19,6 @@ function PackingList({ items, onDeleteItems, onToggleItem }) {
     sortedItems = items
       .slice() //taking copy of items array
       .sort((a, b) => Number(a.packed) - Number(b.packed));
-
   return (
     <div className="list">
       <ul>
@@ -39,6 +38,7 @@ function PackingList({ items, onDeleteItems, onToggleItem }) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
+        <button onClick={()=> {onClearList()}}>Clear List</button>
       </div>
     </div>
   );

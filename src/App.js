@@ -23,12 +23,16 @@ export default function App() {
     
   }
 
+  function handleClearList(){
+    setItems([]);
+  }
+
   return (
     <div className="app">
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList items={items} onDeleteItems={handleDeleteItems} onToggleItem={handleToggleItem} />
-      <Stats items={items} />
+      <PackingList items={items} onDeleteItems={handleDeleteItems} onToggleItem={handleToggleItem} onClearList={handleClearList} />
+      <Stats items={items}  />
     </div>
   );
 }
