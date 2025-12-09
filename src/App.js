@@ -1,8 +1,8 @@
 import "./App.css";
-import Logo from "./views/Logo.jsx";
-import Form from "./views/Form.jsx";
-import PackingList from "./views/PackingList.jsx";
-import Stats from "./views/Stats.jsx";
+import Logo from "./components/Logo.jsx";
+import Form from "./components/Form.jsx";
+import PackingList from "./components/PackingList.jsx";
+import Stats from "./components/Stats.jsx";
 import { useState } from "react";
 
 export default function App() {
