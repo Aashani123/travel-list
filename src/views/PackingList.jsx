@@ -38,7 +38,13 @@ function PackingList({ items, onDeleteItems, onToggleItem, onClearList }) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
-        <button onClick={()=> {onClearList()}}>Clear List</button>
+        <button
+          onClick={() => {
+            onClearList();
+          }}
+        >
+          Clear List
+        </button>
       </div>
     </div>
   );
